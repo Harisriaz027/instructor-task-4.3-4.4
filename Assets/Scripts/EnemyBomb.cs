@@ -20,14 +20,15 @@ public class EnemyBomb : MonoBehaviour
     }
     IEnumerator BombExplodeRoutine()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(7);
         AudioSource.PlayClipAtPoint(booom, transform.position);
         Instantiate(bombParticle, transform.position, bombParticle.transform.rotation);
         Destroy(gameObject);
         player = GameObject.Find("EnemyBombRadius").GetComponent<ExplosionRadius>().player;
-        Destroy(player, 2f);
+        Destroy(player);
         if (player != null)
         {
+           
             Time.timeScale = 0;
         }
     }
